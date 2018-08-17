@@ -69,7 +69,7 @@
           </tr>
         </thread>
         <tbody>
-          <% @posts.each do |x|%>
+          <%@posts.each do |x|%>
           <tr>
             <td><%= link_to "#{x.title}", "/home/detail_ewha/#{x.id}"%></td>
             <td><%=x.updated_at%></td>

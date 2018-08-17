@@ -1,0 +1,2 @@
+module SmtimetableHelper
+end

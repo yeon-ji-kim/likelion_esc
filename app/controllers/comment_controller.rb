@@ -4,10 +4,10 @@ class CommentController < ApplicationController
      
             @post = PostComment.new
             @eval = lecture_eval.new
-            @post.lecture_eval.content = params[:content]
+            @post.lecture_eval.content = params[:contents]
             @post.email = current_user.email
             @post.nickname = current_user.nickname
-            @post.post_id= params[:post_id]
+            @post.post_id= params[:post_ids]
             @post.save
             @eval.written =1
             redirect_to :back

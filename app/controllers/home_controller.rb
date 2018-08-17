@@ -22,7 +22,10 @@ class HomeController < ApplicationController
   end
 
   def show
+    #@posts = Post.all
     @posts = Post.page params[:page]
+    #@posts = Post.where(post_id: params[:post_id]).page params[:page]
+    #@변수 = LectureEval.all
   end
 
   def start
@@ -74,7 +77,7 @@ class HomeController < ApplicationController
   end
   
   def show_ewha
-    @posts = Post.page params[:page]
+    @posts = PostEwha.page params[:page]
   end
   
   def create_ewha
@@ -115,13 +118,14 @@ class HomeController < ApplicationController
   end
   
   def lecturecomment_ewha
-    
+    @Electures = LectureEvalEwha.all
     redirect_to '/home/lecturecomment_ewha'
   end
   
   def lecturecomment_sm
-    
-    redirect_to '/home/lecturecomment_sm'
+     @Slectures = LectureEval.all
+   redirect_to '/home/lecturecomment_sm'
   end
+  
   
 end

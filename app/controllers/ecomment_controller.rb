@@ -2,10 +2,10 @@ class EcommentController < ApplicationController
     def ewrite
             @post = PostEcomment.new
             @eval = lecture_ewha_eval.new
-            @post.lecture_ewha_eval.content = params[:content]
+            @post.lecture_ewha_eval.content = params[:econtents]
             @post.email = current_user.email
             @post.nickname = current_user.nickname
-            @post.post_id= params[:post_id]
+            @post.post_id= params[:epost_ids]
             @post.save
             @eval.written =1
             redirect_to :back

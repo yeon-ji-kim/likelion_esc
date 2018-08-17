@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'smtimetable/index'
+
+  get 'smtimetable/create'
+
   get 'sookmyung/csvsaves'
 
   devise_for :users
@@ -16,16 +20,22 @@ Rails.application.routes.draw do
 
   get 'ecomments/edit'
   
-  get 'home/show_lecturecomment'
   get 'home/lecturecomment_ewha'
+ 
   get 'home/lecturecomment_sm'
+ 
+
   
   get 'ecomment/ewrite'
+ 
   get 'ecomment/star_create'
+ 
   get 'ecomment/star_update'
   
   get 'comment/write'
+ 
   get 'comment/star_create'
+ 
   get 'comment/star_update'
   
 #  get 'home/show_user_post'
@@ -75,6 +85,13 @@ Rails.application.routes.draw do
  get 'comment/star_update', to: 'comment#star_update'
  
  get 'comment/search' => 'comment#search'
+ 
+  
+ get 'ecomment/star_create', to: 'ecomment#star_create'
+ get 'ecomment/ewrite', to: 'ecomment#ewrite'
+ get 'ecomment/star_update', to: 'ecomment#star_update'
+ 
+ get 'ecomment/search' => 'ecomment#search'
  
   root 'home#start'
   
