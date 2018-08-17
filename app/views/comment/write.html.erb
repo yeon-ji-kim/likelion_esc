@@ -1,0 +1,22 @@
+<%= form_for(post) do |f| %>
+
+<div id="star"></div>
+
+<div class="actions">
+    <%= f.submit %>
+</div>
+
+<% end %>
+
+<script>
+    $('#star').raty({
+        path: '/imgs'
+    });
+</script>
+
+<div class="field">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+</div>
+
+

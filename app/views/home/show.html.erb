@@ -1,0 +1,95 @@
+<header>
+    
+</header>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+  <a class="navbar-brand" href="/home/show" style="color:red">ESC</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/home/show">자유게시판<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/food/index">강의평</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/animal/index">시간표</a>
+      </li>
+
+      </ul>
+      </div>
+      <div>
+<!-- Link (right) -->
+    <ul class="nav navbar-nav navbar-text navbar-right">
+    <li class="nav-item">
+        <%if user_signed_in?%>
+          <%=current_user.nickname%> 님
+          <%=link_to '로그아웃',destroy_user_session_path,
+          method: :delete%>
+        <%end%>
+</li>
+</ul>
+
+</div>
+
+</div>
+</nav>
+
+  <div class="row"><!--유저정보-->
+    <div class="col-md-2">
+      <br><br>
+      <div class="containerfluid">
+
+        <div class="jumbotron" style="background-color : #EFF2FB;">
+          <h4>My information</h4>
+          <p>user:<%=current_user.nickname%></p>
+          <p>school:<%=current_user.school%></p>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-10">
+    <div class="container">
+      <br><br>
+      <h1>숙명여대 자유게시판</h1>
+      <hr align = "center">
+      <p align="right"><a class="btn btn-primary" href="/home/new" role="button">새 글쓰기</a></p>
+      
+      <br>
+    
+    
+    <div class = "tabl-responsive">
+      <table class = "table table-fit table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Time</th>
+            <th>Writer</th>
+            <th></th>
+          </tr>
+        </thread>
+        <tbody>
+          <%@posts.each do |x|%>
+          <tr>
+            <td><%= link_to "#{x.title}", "/home/detail/#{x.id}"%></td>
+            <td><%=x.updated_at%></td>
+            <td><%=x.nickname%></td>
+            <td><% if x.email == current_user.email %>
+                <a href='/home/destroy/<%=x.id%>' style='text-decoration:none;'>[삭 제]</a>   |
+                <a href='/home/edit/<%=x.id%>' style='text-decoration:none;'>[수 정]</a>
+                <%end%>
+            </td>
+          </tr>
+          <%end%>
+         
+        </tbody>
+      </table>
+      <%=paginate @posts%>
+      
+    </div>
+    
+    </div>
+</body>

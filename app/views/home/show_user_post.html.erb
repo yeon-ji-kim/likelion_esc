@@ -1,0 +1,7 @@
+<%@posts.each do |x|%>
+    <%= link_to "#{x.title}", "/home/detail/#{x.id}"%></td> | <%=x.updated_at%> | <%=x.nickname%>
+           <% if x.email == current_user.email %>
+                <a href='/home/destroy/<%=x.id%>' style='text-decoration:none;'>[삭 제]</a>   |
+                <a href='/home/edit/<%=x.id%>' style='text-decoration:none;'>[수 정]</a>
+                <%end%>
+<%end%>

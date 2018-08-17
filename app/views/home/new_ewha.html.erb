@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<header>
+    
+</header>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-success">
+  <a class="navbar-brand" href="/home/show_ewha" style="color:red">ESC</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/home/show_ewha">자유게시판<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/food/index">강의평</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/animal/index">시간표</a>
+      </li>
+
+      </ul>
+  </div>
+  <div>
+
+  <!-- Link (right) -->
+    <ul class="nav navbar-nav navbar-text navbar-right">
+    <li class="nav-item">
+        <%if user_signed_in?%>
+          <%=current_user.nickname%>님  
+          <%=link_to '로그아웃',destroy_user_session_path,
+          method: :delete%>
+        <%end%>
+    </li>
+    </ul>
+
+  </div>
+
+
+</nav>
+
+
+  <div class="row"><!--유저정보-->
+    <div class="col-md-2">
+      <br><br>
+      <div class="containerfluid">
+
+        <div class="jumbotron" style="background-color : #BEF5BE ;">
+          <h4>My information</h4>
+          <p>user:<%=current_user.nickname%></p>
+          <p>school:<%=current_user.school%></p>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-10">
+    <div class = "container">
+      <br><br><h1>글 작성</h1>
+      <hr align = "center">
+      <br>
+        <form action='/home/create_ewha' method='post' multipart="true">
+        <%=hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="form-group">
+        <label for="exampleInputEmail1">제목</label>
+            <input name='post_ewha_title' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="제목을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">내용</label>
+            <textarea name="post_ewha_content" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">사진첨부</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+            <!--사진첨부 <%=file_field_tag 'image', accept: 'image/*'%><br>-->
+        <br><br>
+        <p align = "right"><button type="submit" class="btn btn-success">작성</button>
+        <a class="btn btn-success" href="/home/show_ewha" role="button">취소</a></p>
+        </form>
+    </div>
+    </div>
+  </div>
+    
+</body>
+</html>

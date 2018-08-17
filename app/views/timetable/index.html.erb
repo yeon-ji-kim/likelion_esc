@@ -1,0 +1,175 @@
+
+<!--상단 로고 및 nav 바 들어갈 곳-->
+<div class="container">
+    <h1>Timetable</h1>
+</div>
+
+<frameset id="frameset" rows="8*,3*" bordercolor="" framespacing="1">
+    <frame src="/timetable/timetable" width="100%" id="tt" name="tt">
+        <div>
+            <!--좌측에 user 정보 들어갈 부분-->
+        </div>
+        <div id="timetable" class="timetable" style="background-color:#FFFFFF;">
+            <table>
+                <thead>
+                    <tr height="25">
+                        <th class="t"></th>
+                        <td width="100" class="ttTop">Mon</td>
+                        <td width="100" class="ttTop">Tues</td>
+                        <td width="100" class="ttTop">Wed</td>
+                        <td width="100" class="ttTop">Thurs</td>
+                        <td width="100" class="ttTop">Fri</td>
+                    </tr>
+                </thead>
+                <tbody id="lectures">
+                    <tr class="r1">
+                        <th class="t">1</th>
+                        <td class="d1" id="c11">
+                            
+                        </td>
+                        <td class="d2" id="c12">
+                            
+                        </td>
+                        <td class="d3" id="c13">
+                            
+                        </td>
+                        <td class="d4" id="c14">
+                            <div style="height:100%; width:100%; display:table-cell; vertical-align:middle;">
+                                <div class="classname">Christianity and the World</div>
+                                <span class="classinstructor">Myung Sahm Suh</span>
+                                <span class="classsroom">HAK317</span>
+                            </div>
+                        </td>
+                        <td class="d5" id="c15">
+                            
+                        </td>
+                    </tr>
+                    <tr class="r2">
+                        <th class="t">2</th>
+                        <td class="d1" id="c21">
+                            
+                        </td>
+                        <td class="d2" id="c22">
+                            
+                        </td>
+                        <td class="d3" id="c23">
+                            
+                        </td>
+                        <td class="d4" id="c24">
+                            
+                        </td>
+                        <td class="d5" id="c25">
+                            
+                        </td>
+                    </tr>
+                    <tr class="r3">
+                        <th class="t">3</th>
+                        <td class="d1" id="c31">
+                            
+                        </td>
+                        <td class="d2" id="c32">
+                            
+                        </td>
+                        <td class="d3" id="c33">
+                            
+                        </td>
+                        <td class="d4" id="c34">
+                            
+                        </td>
+                        <td class="d5" id="c35">
+                            
+                        </td>
+                    </tr>
+                    <tr class="r4">
+                        <th class="t">4</th>
+                        <td class="d1" id="c41">
+                            
+                        </td>
+                        <td class="d2" id="c42">
+                            
+                        </td>
+                        <td class="d3" id="c43">
+                            
+                        </td>
+                        <td class="d4" id="c44">
+                            
+                        </td>
+                        <td class="d5" id="c45">
+                            
+                        </td>
+                    </tr>
+                    <tr class="r5">
+                        <th class="t">5</th>
+                        <td class="d1" id="c51">
+                            
+                        </td>
+                        <td class="d2" id="c52">
+                            
+                        </td>
+                        <td class="d3" id="c53">
+                            
+                        </td>
+                        <td class="d4" id="c54">
+                            
+                        </td>
+                        <td class="d5" id="c55">
+                            
+                        </td>
+                    </tr>
+                    <tr class="r6">
+                        <th class="t">6</th>
+                        <td class="d1" id="c61">
+                            
+                        </td>
+                        <td class="d2" id="c62">
+                            
+                        </td>
+                        <td class="d3" id="c63">
+                            
+                        </td>
+                        <td class="d4" id="c64">
+                            
+                        </td>
+                        <td class="d5" id="c65">
+                            
+                        </td>
+                    </tr>
+                    <tr class="r7">
+                        <th class="t">7</th>
+                        <td class="d1" id="c71">
+                            
+                        </td>
+                        <td class="d2" id="c72">
+                            
+                        </td>
+                        <td class="d3" id="c73">
+                            
+                        </td>
+                        <td class="d4" id="c74">
+                            
+                        </td>
+                        <td class="d5" id="c75">
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </frame>
+    
+    <!--검색-->
+    <%= form_tag timetable_index_path, :method => :get do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "search", :name => nil %>
+    <% end %>
+    <!--여기까지-->
+
+    <frame src="/timetable/search" name="searchframe">
+        <%@courses.each do |x|%>
+            <a href='/timetable/create/<%=x.id%>'><%=x.title%></a> <br>
+            Courseno: <%=x.courseno%> <br>
+            Instructor: <%=x.instructor%> <br>
+            <br>
+        <%end%>
+    </frame>
+</frameset>

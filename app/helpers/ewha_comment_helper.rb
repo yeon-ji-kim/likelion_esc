@@ -1,0 +1,2 @@
+module EwhaCommentHelper
+end
